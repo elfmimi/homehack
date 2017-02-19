@@ -30,15 +30,11 @@ s.listen(1)
 
 
 def start():
-    this = sys.modules[__name__]
-    html = this.html
-    addr = this.addr
-    s = this.s
     print('listening on', addr)
 
     while True:
-        cl, addr = s.accept()
-        print('client connected from', addr)
+        cl, peer = s.accept()
+        print('client connected from', peer)
         cl_file = cl.makefile('rwb', 0)
         do_on = False
         do_off = False
